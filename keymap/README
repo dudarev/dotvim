@@ -1,0 +1,23 @@
+These are my custom keymaps for vim.
+
+rus.vim
+
+The following abbreviation in .vimrc
+
+abb rru set keymap=rus
+
+Russian phonetic layout different from the standart. The difference is the same as for standart Ubuntu Russian Phonetic and Phonetic Winkeys.
+This layout was popularized by Paul Gorodyansky
+
+http://winrus.com/kbd_e.htm#phon
+
+The differences are well shown in /usr/share/X11/xkb/symbols/ru (Ubuntu keys layout file)
+
+    key	<LatX> {	[     Cyrillic_ha,     Cyrillic_HA	]	};
+    key	<LatH> {	[     Cyrillic_che,     Cyrillic_CHE	]	};
+    key	<AE12> {	[ Cyrillic_softsign, Cyrillic_softsign  ]	};
+
+Also some details of another keymap script are used (toggling layouts by F8 and cursor color change).
+
+http://www.vim.org/scripts/script.php?script_id=926
+https://github.com/vim-scripts/russian-phonetic_utf-8.vim
