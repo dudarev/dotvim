@@ -106,3 +106,7 @@ set foldignore=''
 autocmd FileType python map <buffer> <F7> :call Pyflakes()<CR>
 
 call pathogen#infect()
+call pathogen#helptags()
+
+" do not use quickfix with pyflakes
+let g:pyflakes_use_quickfix = 0
