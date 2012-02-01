@@ -64,16 +64,16 @@ nnoremap <F12> :set go-=m go-=T go-=l go-=L go-=r go-=R go-=b go-=F<CR> :set lin
 " Evoke a web browser
 function! Browser ()
   let line0 = getline (".")
-  let line = matchstr (line0, "http[^ ]*")
+  let line = matchstr (line0, "http[^ >]*")
   :if line==""
-  let line = matchstr (line0, "ftp[^ ]*")
+  let line = matchstr (line0, "ftp[^ >]*")
   :endif
   :if line==""
-  let line = matchstr (line0, "file[^ ]*")
+  let line = matchstr (line0, "file[^ >]*")
   :endif
   let line = escape (line, "#?&;|%")
-  " echo line
-  exec ":silent !chromium-browser ".line
+  echo line
+  exec ":silent !firefox ".line
 endfunction
 nnoremap <F3> :call Browser ()<CR>
 
