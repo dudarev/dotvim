@@ -72,7 +72,7 @@ function! Browser ()
   let line = matchstr (line0, "file[^ >]*")
   :endif
   let line = escape (line, "#?&;|%")
-  echo line
+  " echo line
   exec ":silent !firefox ".line
 endfunction
 nnoremap <F3> :call Browser ()<CR>
