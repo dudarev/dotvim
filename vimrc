@@ -110,3 +110,7 @@ call pathogen#helptags()
 
 " do not use quickfix with pyflakes
 let g:pyflakes_use_quickfix = 0
+
+" ignore in NERDTree files that end with pyc and ~
+let NERDTreeIgnore=['\.pyc$', '\~$']
+
