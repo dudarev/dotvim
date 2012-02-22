@@ -20,3 +20,7 @@
 [submodule "bundle/jshint"]
 	path = bundle/jshint
 	url = http://github.com/walm/jshint.vim.git
+        ignore = untracked
+[submodule "bundle/django-support"]
+	path = bundle/django-support
+	url = https://github.com/lambdalisue/vim-django-support
