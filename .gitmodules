@@ -34,3 +34,6 @@
 	path = bundle/virtualenv
 	url = https://github.com/jmcantrell/vim-virtualenv.git
         ignore = untracked
+[submodule "bundle/gundo"]
+	path = bundle/gundo
+	url = https://github.com/sjl/gundo.vim.git

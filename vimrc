@@ -120,3 +120,5 @@ set completeopt=menuone,longest,preview
 
 map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
+
+nnoremap <F5> :GundoToggle<CR>
