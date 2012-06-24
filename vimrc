@@ -122,3 +122,6 @@ map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
 
 nnoremap <F5> :GundoToggle<CR>
+
+set background=light
+colorscheme solarized
