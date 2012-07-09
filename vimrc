@@ -123,5 +123,9 @@ map <leader>r :RopeRename<CR>
 
 nnoremap <F5> :GundoToggle<CR>
 
-set background=light
-colorscheme solarized
+if has('gui_running')
+    colorscheme solarized
+    set background=light
+else
+    set background=dark
+endif
