@@ -125,3 +125,5 @@ nnoremap <F5> :GundoToggle<CR>
 
 set background=light
 colorscheme solarized
+
+se guioptions=agim
