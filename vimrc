@@ -73,7 +73,7 @@ function! Browser ()
   :endif
   let line = escape (line, "#?&;|%")
   " echo line
-  exec ":silent !firefox ".line
+  exec ":silent !chromium-browser ".line
 endfunction
 nnoremap <F3> :call Browser ()<CR>
 
