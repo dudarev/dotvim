@@ -41,3 +41,6 @@
 	path = bundle/vimwiki
 	url = https://github.com/vim-scripts/vimwiki.git
         ignore = untracked
+[submodule "bundle/django"]
+	path = bundle/django
+	url = https://github.com/vim-scripts/vim-django.git
