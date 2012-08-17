@@ -34,32 +34,12 @@ set fileencodings=utf8,cp1251
 au BufNewFile,BufRead *.txt setf text
 au FileType text set wrap 
 
-nnoremap <F2> "=strftime("%c")<CR>P
-inoremap <F2> <C-R>=strftime("%c")<CR>
-
 " abbreviate seting rus for keyboard
 abb rru set keymap=rus
 abb uuk set keymap=ukr
 
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-
-" Evoke a web browser
-function! Browser ()
-  let line0 = getline (".")
-  let line = matchstr (line0, "http[^ ]*")
-  :if line==""
-  let line = matchstr (line0, "ftp[^ ]*")
-  :endif
-  :if line==""
-  let line = matchstr (line0, "file[^ ]*")
-  :endif
-  let line = escape (line, "#?&;|%")
-  " echo line
-  exec ":silent !chromium-browser ".line
-endfunction
-nnoremap <F3> :call Browser ()<CR>
-nnoremap <F12> :set go-=m go-=T go-=l go-=L go-=r go-=R go-=b go-=F<CR> :set lines=999 columns=999 <CR>
 
 " Evoke a web browser
 function! Browser ()
@@ -75,7 +55,6 @@ function! Browser ()
   " echo line
   exec ":silent !chromium-browser ".line
 endfunction
-nnoremap <F3> :call Browser ()<CR>
 
 " Evoke evince (pdf viewer)
 function! Evince()
@@ -83,7 +62,17 @@ function! Evince()
   echo line
   exec ':silent !evince ' . "\"" . line . "\""
 endfunction
+
+" F-keys mappings
+
+" insert current date and time
+nnoremap <F2> "=strftime("%c")<CR>P
+inoremap <F2> <C-R>=strftime("%c")<CR>
+nnoremap <F3> :call Browser ()<CR>
 nnoremap <F4> :call Evince()<CR>
+nnoremap <F5> :GundoToggle<CR>
+nnoremap <F12> :set go-=m go-=T go-=l go-=L go-=r go-=R go-=b go-=F<CR> :set lines=999 columns=999 <CR>
+
 
 " change local directory to file directory
 abb flcd lcd %:p:h
@@ -120,8 +109,6 @@ set completeopt=menuone,longest,preview
 
 map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
-
-nnoremap <F5> :GundoToggle<CR>
 
 if has('gui_running')
     colorscheme solarized
