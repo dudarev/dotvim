@@ -92,8 +92,6 @@ set vb t_vb=
 
 set foldignore=''
 
-autocmd FileType python map <buffer> <F7> :call Pyflakes()<CR>
-
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -118,3 +116,8 @@ else
 endif
 
 se guioptions=agim
+
+" ignore white space of empty line warning for flake8
+let g:flake8_ignore="W293"
+" autorun flake8 on save
+autocmd BufWritePost *.py call Flake8()
