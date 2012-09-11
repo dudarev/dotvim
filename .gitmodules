@@ -41,3 +41,6 @@
 	path = bundle/vimwiki
 	url = https://github.com/vim-scripts/vimwiki.git
         ignore = untracked
+[submodule "bundle/flake8"]
+	path = bundle/flake8
+	url = https://github.com/nvie/vim-flake8.git
