@@ -44,3 +44,6 @@
 [submodule "bundle/flake8"]
 	path = bundle/flake8
 	url = https://github.com/nvie/vim-flake8.git
+[submodule "bundle/ctlrp.vim"]
+	path = bundle/ctlrp.vim
+	url = http://github.com/kien/ctrlp.vim.git
