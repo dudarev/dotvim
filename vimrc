@@ -121,3 +121,6 @@ se guioptions=agim
 let g:flake8_ignore="W293"
 " autorun flake8 on save
 autocmd BufWritePost *.py call Flake8()
+
+" ctrlp
+let g:ctrlp_custom_ignore = {'file': '\v(\.pyc|\.swp)$'}
