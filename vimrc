@@ -119,6 +119,7 @@ se guioptions=agim
 
 " ignore white space of empty line warning for flake8
 let g:flake8_ignore="W293"
+let g:flake8_max_line_length=99
 " autorun flake8 on save
 autocmd BufWritePost *.py call Flake8()
 
