@@ -47,3 +47,6 @@
 [submodule "bundle/ctlrp.vim"]
 	path = bundle/ctlrp.vim
 	url = http://github.com/kien/ctrlp.vim.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
