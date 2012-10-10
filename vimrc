@@ -71,6 +71,7 @@ inoremap <F2> <C-R>=strftime("%c")<CR>
 nnoremap <F3> :call Browser ()<CR>
 nnoremap <F4> :call Evince()<CR>
 nnoremap <F5> :GundoToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 nnoremap <F12> :set go-=m go-=T go-=l go-=L go-=r go-=R go-=b go-=F<CR> :set lines=999 columns=999 <CR>
 
 
