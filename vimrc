@@ -102,15 +102,6 @@ set vb t_vb=
 
 set foldignore=''
 
-if has('gui_running')
-    colorscheme solarized
-    set background=light
-else
-    set background=dark
-endif
-
-se guioptions=agim
-
 " Quickly edit/reload the vimrc file
 " http://nvie.com/posts/how-i-boosted-my-vim/
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -154,4 +145,15 @@ call pathogen#helptags()
 
 " ignore in NERDTree files that end with pyc and ~
 let NERDTreeIgnore=['\.pyc$', '\~$']
+
+" solarized (it should be at the end)
+
+if has('gui_running')
+    colorscheme solarized
+    set background=light
+else
+    set background=dark
+endif
+
+se guioptions=agim
 
