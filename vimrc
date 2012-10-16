@@ -1,5 +1,3 @@
-" set nocompatible      " This should be set automatically upon detection of .vimrc
-
 " Activate auto filetype detection
 syntax on
 filetype plugin indent on
@@ -7,8 +5,10 @@ filetype on
 filetype plugin on
 syntax enable
 
-"eclipse elim settings
+
+" eclipse elim settings
 set nocompatible
+
 
 set ignorecase          " Don't care about case...
 set smartcase		" ... unless the query contains upper case characters
@@ -21,8 +21,6 @@ set laststatus=2	" Always show filename (2 is always)
 set hidden	    	" Let us move between buffers without writing them.  Don't :q! or :qa! frivolously!
 set softtabstop=4	" Vim sees 4 spaces as a tab
 set shiftwidth=4	" < and > uses spaces
-"set softtabstop=2	" Vim sees 4 spaces as a tab
-"set shiftwidth=2	" < and > uses spaces
 set expandtab		" Tabs mutate into spaces
 set foldmethod=indent	" Default folding
 set backspace=indent,eol,start  " Make backspace work like other editors.
@@ -30,16 +28,25 @@ set backspace=indent,eol,start  " Make backspace work like other editors.
 " set smarttab		" <TAB> width determined by shiftwidth instead of tabstop.  
 set fileencoding=utf8
 set fileencodings=utf8,cp1251
+set hlsearch            " highlight search terms
+set incsearch           " show search matches as you type
+
 
 au BufNewFile,BufRead *.txt setf text
 au FileType text set wrap 
+
 
 " abbreviate seting rus for keyboard
 abb rru set keymap=rus
 abb uuk set keymap=ukr
 
+
+" http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
+" C-\ - Open the definition in a new tab
+" A-] - Open the definition in a vertical split
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
 
 " Evoke a web browser
 function! Browser ()
@@ -56,12 +63,14 @@ function! Browser ()
   exec ":silent !chromium-browser ".line
 endfunction
 
+
 " Evoke evince (pdf viewer)
 function! Evince()
   let line = getline (".")
   echo line
   exec ':silent !evince ' . "\"" . line . "\""
 endfunction
+
 
 " F-keys mappings
 
@@ -71,6 +80,7 @@ inoremap <F2> <C-R>=strftime("%c")<CR>
 nnoremap <F3> :call Browser ()<CR>
 nnoremap <F4> :call Evince()<CR>
 nnoremap <F5> :GundoToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 nnoremap <F12> :set go-=m go-=T go-=l go-=L go-=r go-=R go-=b go-=F<CR> :set lines=999 columns=999 <CR>
 
 
@@ -92,22 +102,6 @@ set vb t_vb=
 
 set foldignore=''
 
-call pathogen#infect()
-call pathogen#helptags()
-
-" do not use quickfix with pyflakes
-let g:pyflakes_use_quickfix = 0
-
-" ignore in NERDTree files that end with pyc and ~
-let NERDTreeIgnore=['\.pyc$', '\~$']
-
-au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
-set completeopt=menuone,longest,preview
-
-map <leader>j :RopeGotoDefinition<CR>
-map <leader>r :RopeRename<CR>
-
 if has('gui_running')
     colorscheme solarized
     set background=light
@@ -117,11 +111,47 @@ endif
 
 se guioptions=agim
 
+" Quickly edit/reload the vimrc file
+" http://nvie.com/posts/how-i-boosted-my-vim/
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" clear search highlighting with <leader>/
+nmap <silent> <leader>/ :nohlsearch<CR>
+
+
+" plugin settings
+
+" ctrlp
+
+let g:ctrlp_custom_ignore = {'file': '\v(\.pyc|\.swp)$'}
+
+" pyflakes
+
+" do not use quickfix with pyflakes
+let g:pyflakes_use_quickfix = 0
+
+" flake8
+
 " ignore white space of empty line warning for flake8
 let g:flake8_ignore="W293"
 let g:flake8_max_line_length=99
 " autorun flake8 on save
 autocmd BufWritePost *.py call Flake8()
 
-" ctrlp
-let g:ctrlp_custom_ignore = {'file': '\v(\.pyc|\.swp)$'}
+" supertab
+
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
+
+" pathogen
+
+call pathogen#infect()
+call pathogen#helptags()
+
+" NERDTree
+
+" ignore in NERDTree files that end with pyc and ~
+let NERDTreeIgnore=['\.pyc$', '\~$']
+
