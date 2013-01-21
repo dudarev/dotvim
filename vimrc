@@ -9,7 +9,8 @@ syntax enable
 " eclipse elim settings
 set nocompatible
 
-
+" http://stackoverflow.com/questions/58774/how-do-you-paste-multiple-tabbed-lines-into-vi
+set pastetoggle=<C-A>   " Ctrl-A toggles paste mode
 set ignorecase          " Don't care about case...
 set smartcase		" ... unless the query contains upper case characters
 set autoindent		" Enable automatic indenting for files with ft set
