@@ -10,7 +10,7 @@ syntax enable
 set nocompatible
 
 " http://stackoverflow.com/questions/58774/how-do-you-paste-multiple-tabbed-lines-into-vi
-set pastetoggle=<C-A>   " Ctrl-A toggles paste mode
+set pastetoggle=<F6>    " F6 toggles paste mode
 set ignorecase          " Don't care about case...
 set smartcase		" ... unless the query contains upper case characters
 set autoindent		" Enable automatic indenting for files with ft set
@@ -31,6 +31,10 @@ set fileencoding=utf8
 set fileencodings=utf8,cp1251
 set hlsearch            " highlight search terms
 set incsearch           " show search matches as you type
+
+" http://nvie.com/posts/how-i-boosted-my-vim/
+set nobackup            " do not write backup and swap files
+set noswapfile
 
 
 au BufNewFile,BufRead *.txt setf text
