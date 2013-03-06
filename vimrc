@@ -65,7 +65,7 @@ function! Browser ()
   :endif
   let line = escape (line, "#?&;|%")
   " echo line
-  exec ":silent !chromium-browser ".line
+  exec ":silent !google-chrome ".line
 endfunction
 
 
