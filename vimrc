@@ -168,3 +168,30 @@ augroup markdown
     au!
     au BufNewFile,BufRead *.md,*.markdown,*.md.in setlocal filetype=ghmarkdown
 augroup END
+
+
+" Link to Spotify
+nnoremap <Leader>al :call AddLink()<CR>
+function! AddLink()
+  let url = getline (".")
+  let url = matchstr (url, "http[^ >]*")
+  if empty(url)
+    return
+  endif
+  let html = system('wget -q -O - ' . shellescape(url))
+  let regex = '\c.*head.*<title[^>]*>\_s*\zs.\{-}\ze\_s*<\/title>'
+  let regex_artist = '\cby \zs.\{-}\ze on Spotify'
+  let regex_title = '\c\zs.\{-}\ze by '
+  let url_title = substitute(matchstr(html, regex), "\n", ' ', 'g')
+  let url_title = substitute(matchstr(html, regex), "\n", ' ', 'g')
+  let title = matchstr(url_title, regex_title)
+  let artist = matchstr(url_title, regex_artist)
+  if empty(title)
+    let title = 'Unknown'
+  endif
+  exe "normal 0c$".title 
+  put = artist 
+  put = url
+  put = ''
+  exe "normal kkk"
+endfunction
