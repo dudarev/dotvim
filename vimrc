@@ -197,3 +197,7 @@ function! AddLink()
   put = ''
   exe "normal kkk"
 endfunction
+
+
+" abbreviate for Python pdb
+abb pdb; import pdb; pdb.set_trace()
