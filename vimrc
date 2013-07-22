@@ -38,6 +38,8 @@ set noswapfile
 
 
 au BufNewFile,BufRead *.txt setf text
+" http://go-lang.cat-v.org/text-editors/vim/
+au BufRead,BufNewFile *.go set filetype=go
 au FileType text set wrap 
 
 
