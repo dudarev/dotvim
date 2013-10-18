@@ -88,6 +88,8 @@ nnoremap <F3> :call Browser ()<CR>
 nnoremap <F4> :call Evince()<CR>
 nnoremap <F5> :GundoToggle<CR>
 nmap <F8> :TagbarToggle<CR>
+nmap <F9> :NERDTreeFind<CR>
+nmap <F10> :NERDTreeToggle<CR>
 nnoremap <F12> :set go-=m go-=T go-=l go-=L go-=r go-=R go-=b go-=F<CR> :set lines=999 columns=999 <CR>
 
 
