@@ -191,11 +191,7 @@ function! AddLink()
   if empty(title)
     let title = 'Unknown'
   endif
-  exe "normal 0c$".title 
-  put = artist 
-  put = url
-  put = ''
-  exe "normal kkk"
+  exe "normal 0c$[".title." - ".artist."](".url.')'
 endfunction
 
 
