@@ -65,3 +65,6 @@
 [submodule "bundle/emmet"]
 	path = bundle/emmet
 	url = https://github.com/mattn/emmet-vim.git
+[submodule "bundle/open-browser"]
+	path = bundle/open-browser
+	url = https://github.com/tyru/open-browser.vim
