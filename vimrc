@@ -222,3 +222,9 @@ abb pdb; import pdb; pdb.set_trace()
 if has("gui_macvim")
     source ~/.vim/mvimrc
 endif
+
+
+" open browser plugin
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
