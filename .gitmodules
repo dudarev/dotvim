@@ -68,3 +68,9 @@
 [submodule "bundle/git-log"]
 	path = bundle/git-log
 	url = https://github.com/kablamo/vim-git-log.git
+[submodule "bundle/open-browser"]
+	path = bundle/open-browser
+	url = https://github.com/tyru/open-browser.vim
+[submodule "bundle/wikilink"]
+	path = bundle/wikilink
+	url = https://github.com/mmai/wikilink.git

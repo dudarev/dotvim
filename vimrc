@@ -193,13 +193,38 @@ function! AddLink()
   if empty(title)
     let title = 'Unknown'
   endif
-  exe "normal 0c$".title 
-  put = artist 
-  put = url
-  put = ''
-  exe "normal kkk"
+  exe "normal 0c$[".title." - ".artist."](".url.')'
+endfunction
+
+
+" URL to Markdown link
+nnoremap <Leader>ll :call AddMarkdownLink()<CR>
+function! AddMarkdownLink()
+  let url = getline (".")
+  let url = matchstr (url, "http[^ >]*")
+  if empty(url)
+    return
+  endif
+  let html = system('wget -q -O - ' . shellescape(url))
+  let regex = '\c.*head.*<title[^>]*>\_s*\zs.\{-}\ze\_s*<\/title>'
+  let url_title = substitute(matchstr(html, regex), "\n", ' ', 'g')
+  if empty(url_title)
+    let url_title = url
+  endif
+  exe "normal 0c$[".url_title."](".url.")"
 endfunction
 
 
 " abbreviate for Python pdb
 abb pdb; import pdb; pdb.set_trace()
+
+
+if has("gui_macvim")
+    source ~/.vim/mvimrc
+endif
+
+
+" open browser plugin
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
