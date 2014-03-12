@@ -228,3 +228,9 @@ endif
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
+
+" https://coderwall.com/p/nckasg
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
