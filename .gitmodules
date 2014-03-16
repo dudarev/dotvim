@@ -74,3 +74,6 @@
 [submodule "bundle/wikilink"]
 	path = bundle/wikilink
 	url = https://github.com/mmai/wikilink.git
+[submodule "bundle/jedi"]
+	path = bundle/jedi
+	url = https://github.com/davidhalter/jedi-vim.git
