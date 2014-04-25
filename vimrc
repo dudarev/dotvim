@@ -234,3 +234,10 @@ vmap gx <Plug>(openbrowser-smart-search)
 :command Wq wq
 :command W w
 :command Q q
+
+" more natural movement between splits with Ctrl-hjkl
+" http://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
