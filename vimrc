@@ -125,6 +125,7 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 " ctrlp
 
 let g:ctrlp_custom_ignore = {'file': '\v(\.pyc|\.swp)$'}
+nmap <silent> <leader>b :CtrlPBuffer<CR>
 
 " pyflakes
 
@@ -241,3 +242,5 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+nmap <silent> <leader>hh :tabnew<CR>:tabm0<CR>:e ~/projects/wiki/Home.md<CR>:lcd %:p:h<CR>
