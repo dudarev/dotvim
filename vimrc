@@ -5,7 +5,6 @@ filetype on
 filetype plugin on
 syntax enable
 
-
 " eclipse elim settings
 set nocompatible
 

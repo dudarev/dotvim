@@ -78,3 +78,6 @@
 [submodule "bundle/jedi"]
 	path = bundle/jedi
 	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "bundle/goyo.vim"]
+	path = bundle/goyo.vim
+	url = https://github.com/junegunn/goyo.vim.git
