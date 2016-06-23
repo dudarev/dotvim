@@ -1,3 +1,5 @@
+## Installing
+
 Based on
 http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
 
@@ -11,11 +13,19 @@ git submodule init
 git submodule update
 ```
 
+## When new submodule is installed in remote
+
+```bash
+git submodule update --init --recursive
+```
+
+
 ## Update all bundled modules
 
 ```bash
 git submodule foreach git pull origin master
 ```
+
 
 ## Install a new bundle
 
@@ -24,6 +34,7 @@ git submodule add http://github.com/tpope/vim-fugitive.git bundle/fugitive
 git add .
 git commit -m "Install Fugitive.vim bundle as a submodule."
 ```
+
 
 ## To remove a submodule
 
