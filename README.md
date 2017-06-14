@@ -8,6 +8,7 @@ git clone http://github.com/dudarev/dotvim.git ~/.vim
 ln -s ~/.vim/vimrc ~/.vimrc
 ln -s ~/.vim/gvimrc ~/.gvimrc
 ln -s ~/.vim/mvimrc ~/.mvimrc
+ln -s ~/.vim/ideavimrc ~/.ideavimrc
 cd .vim
 git submodule init
 git submodule update
