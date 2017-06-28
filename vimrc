@@ -243,6 +243,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 nmap <silent> <leader>hh :tabnew<CR>:tabm0<CR>:e ~/projects/wiki/Home.md<CR>:lcd %:p:h<CR>
+nmap <silent> <leader>nn :tabnew<CR>:tabm0<CR>:e ~/projects/wiki/Now.md<CR>:lcd %:p:h<CR>
 nmap <silent> <leader>yy :tabnew<CR>:tabm0<CR>:e ~/Yoga/wiki/Home.md<CR>:lcd %:p:h<CR>
 nmap <silent> <leader>mm :tabnew<CR>:tabm0<CR>:e ~/Music/Notes/Home.md<CR>:lcd %:p:h<CR>
 
