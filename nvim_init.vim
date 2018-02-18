@@ -59,8 +59,8 @@ vmap gx <Plug>(openbrowser-smart-search)
 
 
 " https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#tips-for-using-pyenv
-let g:python_host_prog = '~/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = $HOME . '/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 " in python3 env
 " pip install flake8
 " ln -s `pyenv which flake8` ~/bin/flake8  # Assumes that $HOME/bin is in $PATH
