@@ -34,6 +34,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tyru/open-browser.vim'
 Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
+Plug 'kien/ctrlp.vim'
+Plug 'mattn/emmet-vim', {'for': ['html', 'js', 'css']}
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'lambdalisue/vim-pyenv', {'for': 'python'}
 Plug 'nvie/vim-flake8', {'for': 'python'}
