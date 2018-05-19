@@ -74,3 +74,8 @@ let g:flake8_ignore="W293"
 let g:flake8_max_line_length=99
 " autorun flake8 on save
 autocmd BufWritePost *.py call Flake8()
+
+
+" run current file as python script
+" https://stackoverflow.com/questions/15449591/vim-execute-current-file
+nnoremap <leader>p :!python %:p<CR>
