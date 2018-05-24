@@ -1,15 +1,38 @@
 " ln -s ~/.vim/nvim_init.vim ~/.config/nvim/init.vim
 
+" Activate auto filetype detection
+syntax on
+filetype plugin indent on
+filetype on
+filetype plugin on
+syntax enable
+
+" indents settings
+set autoindent  " enable automatic indenting for files with file type set
+set backspace=indent,eol,start  " make backspace work like in other editors
+set tabstop=4  " 4 spaces indent
+set softtabstop=4  " vim sees 4 spaces as a tab
+set shiftwidth=4  " < and > 4 spaces as a tab
+set expandtab  " tabs mutate to spaces
+
+
+" 2 spaces indent in html and javascript, note no space after comma
+autocmd filetype html,javascript setlocal ts=2 sts=2 sw=2
+
+
+set ignorecase  " ignore case when searching
+
 
 " F-key mappings
-" F7 - flake8
 nmap <F9> :NERDTreeFind<CR>
 nmap <F10> :NERDTreeToggle<CR>
 
 
 " Quickly edit/reload the vimrc file
 " http://nvie.com/posts/how-i-boosted-my-vim/
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
+" explicit link to place where I keep nvim settings
+" so that I could do flcd there
+nmap <silent> <leader>ev :e ~/.vim/nvim_init.vim<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 
@@ -19,6 +42,10 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+
+" change local directory to file directory
+abb flcd lcd %:p:h
 
 
 " plugin settings
@@ -40,6 +67,7 @@ Plug 'mattn/emmet-vim', {'for': ['html', 'js', 'css']}
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'lambdalisue/vim-pyenv', {'for': 'python'}
 Plug 'nvie/vim-flake8', {'for': 'python'}
+Plug 'pangloss/vim-javascript', {'for': 'js'}
 call plug#end()
 
 
@@ -79,3 +107,15 @@ autocmd BufWritePost *.py call Flake8()
 " run current file as python script
 " https://stackoverflow.com/questions/15449591/vim-execute-current-file
 nnoremap <leader>p :!python %:p<CR>
+
+
+" clear search highlighting with <leader>/
+nmap <silent> <leader>/ :nohlsearch<CR>
+
+
+" To map <Esc> to exit terminal-mode
+tnoremap <Esc> <C-\><C-n>
+
+
+" for pangloss/vim-javascript
+let g:javascript_plugin_flow = 1
