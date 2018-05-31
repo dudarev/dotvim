@@ -19,6 +19,10 @@ set expandtab  " tabs mutate to spaces
 " 2 spaces indent in html and javascript, note no space after comma
 autocmd filetype html,javascript setlocal ts=2 sts=2 sw=2
 
+" correct formatting for Makefiles
+autocmd FileType make setlocal noexpandtab ts=8
+
+
 
 set ignorecase  " ignore case when searching
 
@@ -68,6 +72,9 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'lambdalisue/vim-pyenv', {'for': 'python'}
 Plug 'nvie/vim-flake8', {'for': 'python'}
 Plug 'pangloss/vim-javascript', {'for': 'js'}
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'mmai/wikilink'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 
@@ -119,3 +126,22 @@ tnoremap <Esc> <C-\><C-n>
 
 " for pangloss/vim-javascript
 let g:javascript_plugin_flow = 1
+
+
+" open wiki
+nmap <silent> <leader>hh :tabnew<CR>:tabm0<CR>:e ~/projects/wiki/Home.md<CR>:lcd %:p:h<CR>
+
+
+" prettier
+" single quotes over double quotes
+let g:prettier#config#single_quote = 'false'
+" print spaces between brackets
+let g:prettier#config#bracket_spacing = 'true'
+" put > on the last line instead of new line
+let g:prettier#config#jsx_bracket_same_line = 'false'
+" avoid|always
+let g:prettier#config#arrow_parens = 'avoid'
+" none|es5|all
+let g:prettier#config#trailing_comma = 'none'
+" flow|babylon|typescript|css|less|scss|json|graphql|markdown
+let g:prettier#config#parser = 'babylon'
