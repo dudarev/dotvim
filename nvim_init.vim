@@ -52,6 +52,15 @@ nnoremap <C-H> <C-W><C-H>
 abb flcd lcd %:p:h
 
 
+" abbreviate seting rus for keyboard
+abb rru set keymap=rus
+abb uuk set keymap=ukr
+
+
+" http://stackoverflow.com/questions/58774/how-do-you-paste-multiple-tabbed-lines-into-vi
+set pastetoggle=<F6>    " F6 toggles paste mode
+
+
 " plugin settings
 
 
@@ -103,9 +112,7 @@ let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 " ln -s `pyenv which flake8` ~/bin/flake8  # Assumes that $HOME/bin is in $PATH
 " in python2 envs install flake8 explicitly
 
-" ignore white space of empty line warning for flake8
-let g:flake8_ignore="W293"
-let g:flake8_max_line_length=99
+
 " autorun flake8 on save
 autocmd BufWritePost *.py call Flake8()
 
@@ -144,3 +151,9 @@ let g:prettier#config#arrow_parens = 'avoid'
 let g:prettier#config#trailing_comma = 'none'
 " flow|babylon|typescript|css|less|scss|json|graphql|markdown
 let g:prettier#config#parser = 'babylon'
+
+
+" ctrlp
+
+let g:ctrlp_custom_ignore = {'file': '\v(\.pyc|\.swp)$'}
+nmap <silent> <leader>b :CtrlPBuffer<CR>
