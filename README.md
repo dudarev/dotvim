@@ -19,6 +19,7 @@ git submodule update
 
 ```
 ln -s ~/.vim/nvim_init.vim ~/.config/nvim/init.vim
+ln -s ~/.vim/keymap ~/.config/nvim/keymap
 ```
 
 In `nvim`: `:PlugInstall`.
