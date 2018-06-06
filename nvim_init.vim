@@ -76,8 +76,9 @@ Plug 'ervandew/supertab'
 Plug 'ervandew/supertab'
 Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim', {'for': ['html', 'js', 'css']}
-Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'lambdalisue/vim-pyenv', {'for': 'python'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'nvie/vim-flake8', {'for': 'python'}
 Plug 'pangloss/vim-javascript', {'for': 'js'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -111,6 +112,10 @@ let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 " pip install flake8
 " ln -s `pyenv which flake8` ~/bin/flake8  # Assumes that $HOME/bin is in $PATH
 " in python2 envs install flake8 explicitly
+
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
 
 " autorun flake8 on save
