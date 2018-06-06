@@ -115,6 +115,13 @@ let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 
 " autorun flake8 on save
 autocmd BufWritePost *.py call Flake8()
+" http://flake8.readthedocs.io/en/latest/user/configuration.html
+" configure flake8 in ~/.config/flake8
+" [flake8]
+" ignore = W293
+" max-line-length=99
+" exclude = .git,__pycache__,docs/source/conf.py,old,build,dist
+" max-complexity = 10
 
 
 " run current file as python script
