@@ -84,6 +84,7 @@ Plug 'pangloss/vim-javascript', {'for': 'js'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'mmai/wikilink'
 Plug 'tpope/vim-commentary'
+Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 call plug#end()
 
 
@@ -169,3 +170,8 @@ let g:prettier#config#parser = 'babylon'
 
 let g:ctrlp_custom_ignore = {'file': '\v(\.pyc|\.swp)$'}
 nmap <silent> <leader>b :CtrlPBuffer<CR>
+
+
+" http://nvie.com/posts/how-i-boosted-my-vim/
+set nobackup            " do not write backup and swap files
+set noswapfile
