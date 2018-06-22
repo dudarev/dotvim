@@ -71,13 +71,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'lifepillar/vim-solarized8'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'tyru/open-browser.vim'
 Plug 'ervandew/supertab'
 Plug 'ervandew/supertab'
 Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim', {'for': ['html', 'js', 'css']}
 Plug 'lambdalisue/vim-pyenv', {'for': 'python'}
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'js'] }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'nvie/vim-flake8', {'for': 'python'}
 Plug 'pangloss/vim-javascript', {'for': 'js'}
@@ -85,6 +86,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'mmai/wikilink'
 Plug 'tpope/vim-commentary'
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 
@@ -117,6 +119,9 @@ let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+" https://github.com/Shougo/deoplete.nvim/issues/464
+autocmd FileType markdown let b:deoplete_disable_auto_complete = 1
+
 
 
 " autorun flake8 on save
@@ -175,3 +180,21 @@ nmap <silent> <leader>b :CtrlPBuffer<CR>
 " http://nvie.com/posts/how-i-boosted-my-vim/
 set nobackup            " do not write backup and swap files
 set noswapfile
+
+
+" URL to Markdown link
+nnoremap <Leader>ll :call AddMarkdownLink()<CR>
+function! AddMarkdownLink()
+  let url = getline (".")
+  let url = matchstr (url, "http[^ >]*")
+  if empty(url)
+    return
+  endif
+  let html = system('wget -q -O - ' . shellescape(url))
+  let regex = '\c.*head.*<title[^>]*>\_s*\zs.\{-}\ze\_s*<\/title>'
+  let url_title = substitute(matchstr(html, regex), "\n", ' ', 'g')
+  if empty(url_title)
+    let url_title = url
+  endif
+  exe "normal 0c$[".url_title."](".url.")"
+endfunction
