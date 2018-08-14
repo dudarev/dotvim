@@ -22,6 +22,12 @@ ln -s ~/.vim/nvim_init.vim ~/.config/nvim/init.vim
 ln -s ~/.vim/keymap ~/.config/nvim/keymap
 ```
 
+To install Plug:
+
+```
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
 In `nvim`: `:PlugInstall`.
 
 Based on https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
