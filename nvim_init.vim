@@ -204,3 +204,8 @@ endfunction
 " surround with double square brackets with 'l' character
 " https://stackoverflow.com/questions/32769488/double-vim-surround-with
 let g:surround_{char2nr('l')} = "[[\r]]"
+
+
+" https://stackoverflow.com/questions/33285401/vim-how-do-i-map-vimgrep-command-to-avoid-typing-the-file-pattern
+" http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
+command! -nargs=1 F vimgrep <args> ** | cwindow 5
