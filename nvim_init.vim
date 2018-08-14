@@ -74,7 +74,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tyru/open-browser.vim'
 Plug 'ervandew/supertab'
-Plug 'ervandew/supertab'
 Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim', {'for': ['html', 'js', 'css']}
 Plug 'lambdalisue/vim-pyenv', {'for': 'python'}
@@ -84,9 +83,10 @@ Plug 'nvie/vim-flake8', {'for': 'python'}
 Plug 'pangloss/vim-javascript', {'for': 'js'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'mmai/wikilink'
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'  " use gc
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 Plug 'junegunn/goyo.vim'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 
@@ -121,7 +121,7 @@ let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 let g:deoplete#enable_at_startup = 1
 " https://github.com/Shougo/deoplete.nvim/issues/464
 autocmd FileType markdown let b:deoplete_disable_auto_complete = 1
-
+set completeopt-=preview
 
 
 " autorun flake8 on save
@@ -154,7 +154,7 @@ let g:javascript_plugin_flow = 1
 
 " open wiki
 nmap <silent> <leader>hh :tabnew<CR>:tabm0<CR>:e ~/projects/wiki/Home.md<CR>:lcd %:p:h<CR>
-
+nmap <silent> <leader>cc :tabnew<CR>:tabm0<CR>:e ~/projects/wiki-common-knowledge-base/Home.md<CR>:lcd %:p:h<CR>
 
 " prettier
 " single quotes over double quotes
@@ -175,6 +175,7 @@ let g:prettier#config#parser = 'babylon'
 
 let g:ctrlp_custom_ignore = {'file': '\v(\.pyc|\.swp)$'}
 nmap <silent> <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>. :CtrlPTag<cr>
 
 
 " http://nvie.com/posts/how-i-boosted-my-vim/
@@ -198,3 +199,8 @@ function! AddMarkdownLink()
   endif
   exe "normal 0c$[".url_title."](".url.")"
 endfunction
+
+
+" surround with double square brackets with 'l' character
+" https://stackoverflow.com/questions/32769488/double-vim-surround-with
+let g:surround_{char2nr('l')} = "[[\r]]"
