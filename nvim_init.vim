@@ -87,6 +87,7 @@ Plug 'tpope/vim-commentary'  " use gc
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround'
+Plug 'mmai/vim-markdown-wiki', {'for': 'markdown'}
 call plug#end()
 
 
@@ -108,6 +109,7 @@ nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
 
+" jedi
 " https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#tips-for-using-pyenv
 let g:python_host_prog = $HOME . '/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
