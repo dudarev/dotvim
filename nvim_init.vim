@@ -182,7 +182,6 @@ nnoremap <leader>. :CtrlPTag<cr>
 
 " http://nvie.com/posts/how-i-boosted-my-vim/
 set nobackup            " do not write backup and swap files
-set noswapfile
 
 
 " URL to Markdown link
