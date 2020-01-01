@@ -210,3 +210,8 @@ let g:surround_{char2nr('l')} = "[[\r]]"
 " https://stackoverflow.com/questions/33285401/vim-how-do-i-map-vimgrep-command-to-avoid-typing-the-file-pattern
 " http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
 command! -nargs=1 F vimgrep <args> ** | cwindow 5
+
+
+" insert timestamp with F2
+nmap <F2> i<C-R>=strftime("%Y-%m-%d %H:%M")<CR><Esc>
+imap <F2> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
