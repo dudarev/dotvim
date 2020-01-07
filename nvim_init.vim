@@ -1,11 +1,18 @@
 " ln -s ~/.vim/nvim_init.vim ~/.config/nvim/init.vim
 
+" check if file was changed
+" https://github.com/neovim/neovim/issues/1936
+set autoread
+au FocusGained * :checktime
+
+
 " Activate auto filetype detection
 syntax on
 filetype plugin indent on
 filetype on
 filetype plugin on
 syntax enable
+
 
 " indents settings
 set autoindent  " enable automatic indenting for files with file type set
@@ -215,3 +222,7 @@ command! -nargs=1 F vimgrep <args> ** | cwindow 5
 " insert timestamp with F2
 nmap <F2> i<C-R>=strftime("%Y-%m-%d %H:%M")<CR><Esc>
 imap <F2> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
+
+
+let g:python_host_prog = '/home/dudarev/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/home/dudarev/.pyenv/versions/neovim3/bin/python'
