@@ -89,12 +89,11 @@ Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'nvie/vim-flake8', {'for': 'python'}
 Plug 'pangloss/vim-javascript', {'for': 'js'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'mmai/wikilink'
 Plug 'tpope/vim-commentary'  " use gc
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround'
-Plug 'mmai/vim-markdown-wiki', {'for': 'markdown'}
+Plug 'mmai/wikilink', {'for': 'markdown'}
 call plug#end()
 
 
@@ -224,5 +223,4 @@ nmap <F2> i<C-R>=strftime("%Y-%m-%d %H:%M")<CR><Esc>
 imap <F2> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
 
 
-let g:python_host_prog = '/home/dudarev/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '/home/dudarev/.pyenv/versions/neovim3/bin/python'
