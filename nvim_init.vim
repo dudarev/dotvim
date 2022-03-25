@@ -34,6 +34,10 @@ autocmd FileType make setlocal noexpandtab ts=8
 set ignorecase  " ignore case when searching
 
 
+" insert timestamp with F2
+nmap <F2> i<C-R>=strftime("%Y-%m-%d %H:%M")<CR><Esc>
+imap <F2> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
+
 " F-key mappings
 nmap <F9> :NERDTreeFind<CR>
 nmap <F10> :NERDTreeToggle<CR>
@@ -80,10 +84,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tyru/open-browser.vim'
-Plug 'ervandew/supertab'
 Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim', {'for': ['html', 'js', 'css']}
-Plug 'lambdalisue/vim-pyenv', {'for': 'python'}
+" Plug 'lambdalisue/vim-pyenv', {'for': 'python'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'js'] }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'nvie/vim-flake8', {'for': 'python'}
@@ -93,7 +96,9 @@ Plug 'tpope/vim-commentary'  " use gc
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround'
-Plug 'mmai/wikilink', {'for': 'markdown'}
+" Plug 'mmai/wikilink', {'for': 'markdown'}
+Plug 'vimwiki/vimwiki'
+Plug 'ervandew/supertab'
 call plug#end()
 
 
@@ -117,7 +122,7 @@ vmap gx <Plug>(openbrowser-smart-search)
 
 " jedi
 " https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#tips-for-using-pyenv
-let g:python_host_prog = $HOME . '/.pyenv/versions/neovim2/bin/python'
+let g:python_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 " in python3 env
 " pip install flake8
@@ -133,7 +138,7 @@ set completeopt-=preview
 
 
 " autorun flake8 on save
-autocmd BufWritePost *.py call Flake8()
+" autocmd BufWritePost *.py call Flake8()
 " http://flake8.readthedocs.io/en/latest/user/configuration.html
 " configure flake8 in ~/.config/flake8
 " [flake8]
@@ -218,9 +223,7 @@ let g:surround_{char2nr('l')} = "[[\r]]"
 command! -nargs=1 F vimgrep <args> ** | cwindow 5
 
 
-" insert timestamp with F2
-nmap <F2> i<C-R>=strftime("%Y-%m-%d %H:%M")<CR><Esc>
-imap <F2> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
-
-
-let g:python3_host_prog = '/home/dudarev/.pyenv/versions/neovim3/bin/python'
+" disable vimwiki tab mapping
+let g:vimwiki_table_mappings = 0
+" https://github.com/vimwiki/vimwiki/issues/683
+nmap  <Leader>f <Plug>VimwikiVSplitLink
