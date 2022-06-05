@@ -1,5 +1,14 @@
 " ln -s ~/.vim/nvim_init.vim ~/.config/nvim/init.vim
 
+" jedi
+" https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#tips-for-using-pyenv
+let g:python_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
+let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
+" in python3 env
+" pip install flake8
+" ln -s `pyenv which flake8` ~/bin/flake8  # Assumes that $HOME/bin is in $PATH
+" in python2 envs install flake8 explicitly
+
 " check if file was changed
 " https://github.com/neovim/neovim/issues/1936
 set autoread
@@ -79,6 +88,7 @@ set pastetoggle=<F6>    " F6 toggles paste mode
 " curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 " :PlugInstall
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'sbdchd/vim-run'
 Plug 'lifepillar/vim-solarized8'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
@@ -120,14 +130,6 @@ nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
 
-" jedi
-" https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#tips-for-using-pyenv
-let g:python_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
-let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
-" in python3 env
-" pip install flake8
-" ln -s `pyenv which flake8` ~/bin/flake8  # Assumes that $HOME/bin is in $PATH
-" in python2 envs install flake8 explicitly
 
 
 " deoplete
