@@ -9,6 +9,7 @@ let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 " ln -s `pyenv which flake8` ~/bin/flake8  # Assumes that $HOME/bin is in $PATH
 " in python2 envs install flake8 explicitly
 
+
 " check if file was changed
 " https://github.com/neovim/neovim/issues/1936
 set autoread
@@ -24,40 +25,35 @@ syntax enable
 
 
 " indents settings
-set autoindent  " enable automatic indenting for files with file type set
-set backspace=indent,eol,start  " make backspace work like in other editors
-set tabstop=4  " 4 spaces indent
-set softtabstop=4  " vim sees 4 spaces as a tab
-set shiftwidth=4  " < and > 4 spaces as a tab
-set expandtab  " tabs mutate to spaces
+set autoindent                 " enable automatic indenting for files with file type set
+set backspace=indent,eol,start " make backspace work like in other editors
+set tabstop=4                  " 4 spaces indent
+set softtabstop=4              " vim sees 4 spaces as a tab
+set shiftwidth=4               " < and > 4 spaces as a tab
+set expandtab                  " tabs mutate to spaces
 
 
 " 2 spaces indent in html and javascript, note no space after comma
 autocmd filetype html,javascript setlocal ts=2 sts=2 sw=2
 
+
 " correct formatting for Makefiles
 autocmd FileType make setlocal noexpandtab ts=8
-
 
 
 set ignorecase  " ignore case when searching
 
 
+" F-key mappings
+
 " insert timestamp with F2
 nmap <F2> i<C-R>=strftime("%Y-%m-%d %H:%M")<CR><Esc>
 imap <F2> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
 
-" F-key mappings
+" open random file from the current directory
+nmap <F3> :edit `ls \\| shuf -n1 \\| tail -1`<CR>
 nmap <F9> :NERDTreeFind<CR>
 nmap <F10> :NERDTreeToggle<CR>
-
-
-" Quickly edit/reload the vimrc file
-" http://nvie.com/posts/how-i-boosted-my-vim/
-" explicit link to place where I keep nvim settings
-" so that I could do flcd there
-nmap <silent> <leader>ev :e ~/.vim/nvim_init.vim<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 
 " more natural movement between splits with Ctrl-hjkl
@@ -83,7 +79,6 @@ set pastetoggle=<F6>    " F6 toggles paste mode
 
 " plugin settings
 
-
 " https://github.com/junegunn/vim-plug
 " curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 " :PlugInstall
@@ -101,7 +96,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['python', '
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'nvie/vim-flake8', {'for': 'python'}
 Plug 'pangloss/vim-javascript', {'for': 'js'}
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'tpope/vim-commentary'  " use gc
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 Plug 'junegunn/goyo.vim'
@@ -109,6 +103,7 @@ Plug 'tpope/vim-surround'
 " Plug 'mmai/wikilink', {'for': 'markdown'}
 Plug 'vimwiki/vimwiki'
 Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular' " `:Tab /=` - align all equal signs
 call plug#end()
 
 
@@ -124,12 +119,10 @@ set background=light
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
 
-" open browser plugin
+" open-browser plugin
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
-
-
 
 
 " deoplete
@@ -137,17 +130,6 @@ let g:deoplete#enable_at_startup = 1
 " https://github.com/Shougo/deoplete.nvim/issues/464
 autocmd FileType markdown let b:deoplete_disable_auto_complete = 1
 set completeopt-=preview
-
-
-" autorun flake8 on save
-" autocmd BufWritePost *.py call Flake8()
-" http://flake8.readthedocs.io/en/latest/user/configuration.html
-" configure flake8 in ~/.config/flake8
-" [flake8]
-" ignore = W293
-" max-line-length=99
-" exclude = .git,__pycache__,docs/source/conf.py,old,build,dist
-" max-complexity = 10
 
 
 " run current file as python script
@@ -167,23 +149,9 @@ tnoremap <Esc> <C-\><C-n>
 let g:javascript_plugin_flow = 1
 
 
-" open wiki
+" open wikis
+nmap <silent> <leader>gg :tabnew<CR>:tabm0<CR>:e ~/Dropbox/Thinking/Home.md<CR>:lcd %:p:h<CR>
 nmap <silent> <leader>hh :tabnew<CR>:tabm0<CR>:e ~/projects/wiki/Home.md<CR>:lcd %:p:h<CR>
-nmap <silent> <leader>cc :tabnew<CR>:tabm0<CR>:e ~/projects/wiki-common-knowledge-base/Home.md<CR>:lcd %:p:h<CR>
-
-" prettier
-" single quotes over double quotes
-let g:prettier#config#single_quote = 'false'
-" print spaces between brackets
-let g:prettier#config#bracket_spacing = 'true'
-" put > on the last line instead of new line
-let g:prettier#config#jsx_bracket_same_line = 'false'
-" avoid|always
-let g:prettier#config#arrow_parens = 'avoid'
-" none|es5|all
-let g:prettier#config#trailing_comma = 'none'
-" flow|babylon|typescript|css|less|scss|json|graphql|markdown
-let g:prettier#config#parser = 'babylon'
 
 
 " ctrlp
@@ -220,6 +188,7 @@ endfunction
 let g:surround_{char2nr('l')} = "[[\r]]"
 
 
+" search in current directory with `F 'search term'`
 " https://stackoverflow.com/questions/33285401/vim-how-do-i-map-vimgrep-command-to-avoid-typing-the-file-pattern
 " http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
 command! -nargs=1 F vimgrep <args> ** | cwindow 5
@@ -229,3 +198,15 @@ command! -nargs=1 F vimgrep <args> ** | cwindow 5
 let g:vimwiki_table_mappings = 0
 " https://github.com/vimwiki/vimwiki/issues/683
 nmap  <Leader>f <Plug>VimwikiVSplitLink
+let g:vimwiki_diary_rel_path = ''
+
+
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+
+
+" Quickly edit/reload the vimrc file
+" http://nvie.com/posts/how-i-boosted-my-vim/
+" explicit link to place where I keep nvim settings
+" so that I could do flcd there
+nmap <silent> <leader>ev :e ~/.vim/nvim_init.vim<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
