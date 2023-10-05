@@ -1,2 +1,3 @@
 set surround  " enable surround plugin
 set ignorecase  " ignore case when searching
+Plug 'tpope/vim-commentary'  " https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins#commentary 
