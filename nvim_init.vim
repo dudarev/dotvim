@@ -2,7 +2,6 @@
 
 " jedi
 " https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#tips-for-using-pyenv
-let g:python_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 " in python3 env
 " pip install flake8
@@ -210,3 +209,5 @@ let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 " so that I could do flcd there
 nmap <silent> <leader>ev :e ~/.vim/nvim_init.vim<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+nmap <silent> <leader>c :!t count<CR>
